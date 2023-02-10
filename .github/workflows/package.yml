@@ -3,7 +3,7 @@ name: Package and push to ghcr.io
 on:
   push:
     branches:
-      - "master"
+      - "main"
 
 jobs:
   docker:
