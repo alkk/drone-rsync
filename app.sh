@@ -36,7 +36,6 @@ RSYNC_OPTIONS=""
 [ ! -z "$PLUGIN_EXTRA" ] && RSYNC_OPTIONS="$RSYNC_OPTIONS $PLUGIN_EXTRA"
 
 for i in $(seq 1 $PLUGIN_RETRIES); do
-    echo rsync -az -e "ssh -i /tmp/ssh-id -l $PLUGIN_USER $SSH_OPTIONS" $RSYNC_OPTIONS $PLUGIN_SOURCE $PLUGIN_HOST:$PLUGIN_DESTINATION
     rsync -az -e "ssh -i /tmp/ssh-id -l $PLUGIN_USER $SSH_OPTIONS" $RSYNC_OPTIONS $PLUGIN_SOURCE $PLUGIN_HOST:$PLUGIN_DESTINATION && exit 0
     echo "rsync failed, retrying in $PLUGIN_RETRY_INTERVAL seconds"
     sleep $PLUGIN_RETRY_INTERVAL
