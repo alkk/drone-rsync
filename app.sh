@@ -26,8 +26,13 @@ PLUGIN_SOURCE=$(echo $PLUGIN_SOURCE | tr , ' ')
 [ -z "$PLUGIN_RETRY_INTERVAL" ] && PLUGIN_RETRY_INTERVAL=5
 
 umask 177
-echo "$PLUGIN_KEY" | base64 -d > /tmp/ssh-id 2>/dev/null
+echo "$PLUGIN_KEY" | grep -q "PRIVATE KEY"
 if [ $? != 0 ]; then
+    echo "$PLUGIN_KEY" | base64 -d > /tmp/ssh-id 2>/dev/null
+    if [ $? != 0 ]; then
+        echo "$PLUGIN_KEY" > /tmp/ssh-id
+    fi
+else
     echo "$PLUGIN_KEY" > /tmp/ssh-id
 fi
 

@@ -1,4 +1,4 @@
-FROM alpine:3.17.2
+FROM alpine:3.20.3
 
 LABEL maintainer="Alex Kirhenshtein <alk@netxms.org>"
 

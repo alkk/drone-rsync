@@ -10,7 +10,7 @@ There are already a few plugins for rsync, but they all have crazy assumptions l
 
 ```yaml
 - name: deploy
-  image: ghcr.io/alkk/drone-rsync:1.0
+  image: ghcr.io/alkk/drone-rsync:1.1
   settings:
       host:
           from_secret: target_host
